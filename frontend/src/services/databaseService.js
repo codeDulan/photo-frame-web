@@ -1,6 +1,7 @@
 class DatabaseService {
   constructor() {
-    this.apiBaseUrl = "http://localhost:3001/api";
+    // In production, fallback url should be "https://backend.railway.app/api"
+    this.apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:3001/api";
     this.isClient = typeof window !== "undefined";
   }
 

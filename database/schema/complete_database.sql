@@ -23,7 +23,7 @@ CREATE TABLE `categories` (
 LOCK TABLES `categories` WRITE;
 INSERT INTO `categories`
 VALUES (1, 'Oil Painting', 'OIL', 0.00),
-(2, '100 Designs', 'HUNDRED', 0.00),
+(2, 'Normal Designs', 'HUNDRED', 0.00),
 (3, 'Cute Collections', 'CUTE', 450.00),
 (4, 'Mini Frames', 'MINI', 0.00);
 UNLOCK TABLES;
@@ -146,168 +146,7 @@ VALUES (1, 'DT1', 'Design 1', 2),
 (99, 'DT99', 'Design 99', 2),
 (100, 'DT100', 'Design 100', 2);
 UNLOCK TABLES;
---
--- Table structure for table `frame_colors`
---
-DROP TABLE IF EXISTS `frame_colors`;
-CREATE TABLE `frame_colors` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `frame_type_id` int NOT NULL,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `frame_type_id` (`frame_type_id`),
-  CONSTRAINT `frame_colors_ibfk_1` FOREIGN KEY (`frame_type_id`) REFERENCES `frame_types` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 33 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
---
--- Dumping data for table `frame_colors`
---
-LOCK TABLES `frame_colors` WRITE;
-INSERT INTO `frame_colors`
-VALUES (1, 5, 'Black'),
-(2, 5, 'White'),
-(3, 5, 'Brown'),
-(4, 5, 'Pinewood'),
-(5, 11, 'Black'),
-(6, 11, 'White'),
-(7, 11, 'Brown'),
-(8, 11, 'Pinewood'),
-(9, 1, 'Black'),
-(10, 2, 'Black'),
-(11, 3, 'Black'),
-(12, 4, 'Black'),
-(13, 6, 'Black'),
-(14, 7, 'Black'),
-(15, 8, 'Black'),
-(16, 9, 'Black'),
-(17, 10, 'Black'),
-(18, 12, 'Black'),
-(19, 19, 'Black'),
-(20, 20, 'Black'),
-(21, 1, 'White'),
-(22, 2, 'White'),
-(23, 3, 'White'),
-(24, 4, 'White'),
-(25, 6, 'White'),
-(26, 7, 'White'),
-(27, 8, 'White'),
-(28, 9, 'White'),
-(29, 10, 'White'),
-(30, 12, 'White'),
-(31, 19, 'White'),
-(32, 20, 'White');
-UNLOCK TABLES;
---
--- Table structure for table `frame_prices`
---
-DROP TABLE IF EXISTS `frame_prices`;
-CREATE TABLE `frame_prices` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `frame_type_id` int NOT NULL,
-  `size_id` int NOT NULL,
-  `price_lkr` decimal(10, 2) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `frame_type_id` (`frame_type_id`),
-  KEY `size_id` (`size_id`),
-  CONSTRAINT `frame_prices_ibfk_1` FOREIGN KEY (`frame_type_id`) REFERENCES `frame_types` (`id`),
-  CONSTRAINT `frame_prices_ibfk_2` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 144 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
---
--- Dumping data for table `frame_prices`
---
-LOCK TABLES `frame_prices` WRITE;
-INSERT INTO `frame_prices`
-VALUES (1, 1, 1, 2800.00),
-(2, 1, 2, 3400.00),
-(3, 1, 3, 3850.00),
-(4, 1, 4, 4200.00),
-(5, 1, 5, 4600.00),
-(6, 1, 6, 4950.00),
-(7, 1, 7, 5250.00),
-(8, 2, 1, 3100.00),
-(9, 2, 2, 3500.00),
-(10, 2, 3, 3950.00),
-(11, 2, 4, 4200.00),
-(12, 2, 5, 4750.00),
-(13, 2, 6, 5000.00),
-(14, 2, 7, 5500.00),
-(15, 3, 1, 2800.00),
-(16, 3, 2, 3400.00),
-(17, 3, 3, 3850.00),
-(18, 3, 4, 4100.00),
-(19, 3, 5, 4450.00),
-(20, 3, 6, 4750.00),
-(21, 3, 7, 4950.00),
-(22, 4, 1, 2750.00),
-(23, 4, 2, 3300.00),
-(24, 4, 3, 3650.00),
-(25, 4, 4, 3950.00),
-(26, 4, 5, 4150.00),
-(27, 4, 6, 4400.00),
-(28, 4, 7, 4750.00),
-(29, 5, 1, 2800.00),
-(30, 5, 3, 3700.00),
-(31, 5, 4, 4000.00),
-(32, 5, 5, 4350.00),
-(33, 5, 6, 4650.00),
-(34, 5, 7, 4950.00),
-(35, 6, 1, 3000.00),
-(36, 6, 2, 3450.00),
-(37, 6, 3, 3900.00),
-(38, 6, 4, 4200.00),
-(39, 6, 5, 4500.00),
-(40, 6, 6, 4950.00),
-(41, 6, 7, 5200.00),
-(42, 7, 1, 1950.00),
-(43, 7, 2, 2500.00),
-(44, 7, 3, 2850.00),
-(45, 7, 4, 3200.00),
-(46, 7, 5, 3550.00),
-(47, 7, 6, 3950.00),
-(48, 7, 7, 4250.00),
-(49, 8, 1, 2200.00),
-(50, 8, 2, 2600.00),
-(51, 8, 3, 2950.00),
-(52, 8, 4, 3200.00),
-(53, 8, 5, 3750.00),
-(54, 8, 6, 4100.00),
-(55, 8, 7, 4450.00),
-(56, 9, 1, 1950.00),
-(57, 9, 2, 2550.00),
-(58, 9, 3, 2850.00),
-(59, 9, 4, 3100.00),
-(60, 9, 5, 3450.00),
-(61, 9, 6, 3750.00),
-(62, 9, 7, 3950.00),
-(63, 10, 1, 1900.00),
-(64, 10, 2, 2450.00),
-(65, 10, 3, 2800.00),
-(66, 10, 4, 2950.00),
-(67, 10, 5, 3150.00),
-(68, 10, 6, 3400.00),
-(69, 10, 7, 3750.00),
-(70, 11, 1, 1950.00),
-(71, 11, 3, 2850.00),
-(72, 11, 4, 3150.00),
-(73, 11, 5, 3350.00),
-(74, 11, 6, 3650.00),
-(75, 11, 7, 3950.00),
-(76, 12, 1, 2250.00),
-(77, 12, 2, 2600.00),
-(78, 12, 3, 2950.00),
-(79, 12, 4, 3200.00),
-(80, 12, 5, 3550.00),
-(81, 12, 6, 3950.00),
-(82, 12, 7, 4250.00),
-(134, 19, 8, 850.00),
-(135, 19, 9, 950.00),
-(136, 19, 10, 1500.00),
-(137, 19, 11, 1950.00),
-(138, 19, 12, 1650.00),
-(139, 19, 13, 2250.00),
-(140, 19, 14, 2500.00),
-(141, 20, 15, 1850.00),
-(142, 20, 16, 1500.00);
-UNLOCK TABLES;
+
 --
 -- Table structure for table `frame_types`
 --
@@ -323,9 +162,7 @@ CREATE TABLE `frame_types` (
   UNIQUE KEY `code` (`code`),
   KEY `category_id` (`category_id`),
   CONSTRAINT `frame_types_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 22 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */
-;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 --
 -- Dumping data for table `frame_types`
 --
@@ -437,6 +274,222 @@ VALUES (
     1
   );
 UNLOCK TABLES;
+
+--
+-- Table structure for table `frame_colors`
+--
+DROP TABLE IF EXISTS `frame_colors`;
+CREATE TABLE `frame_colors` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `frame_type_id` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `frame_type_id` (`frame_type_id`),
+  CONSTRAINT `frame_colors_ibfk_1` FOREIGN KEY (`frame_type_id`) REFERENCES `frame_types` (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 33 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+--
+-- Dumping data for table `frame_colors`
+--
+LOCK TABLES `frame_colors` WRITE;
+INSERT INTO `frame_colors`
+VALUES (1, 5, 'Black'),
+(2, 5, 'White'),
+(3, 5, 'Brown'),
+(4, 5, 'Pinewood'),
+(5, 11, 'Black'),
+(6, 11, 'White'),
+(7, 11, 'Brown'),
+(8, 11, 'Pinewood'),
+(9, 1, 'Black'),
+(10, 2, 'Black'),
+(11, 3, 'Black'),
+(12, 4, 'Black'),
+(13, 6, 'Black'),
+(14, 7, 'Black'),
+(15, 8, 'Black'),
+(16, 9, 'Black'),
+(17, 10, 'Black'),
+(18, 12, 'Black'),
+(19, 19, 'Black'),
+(20, 20, 'Black'),
+(21, 1, 'White'),
+(22, 2, 'White'),
+(23, 3, 'White'),
+(24, 4, 'White'),
+(25, 6, 'White'),
+(26, 7, 'White'),
+(27, 8, 'White'),
+(28, 9, 'White'),
+(29, 10, 'White'),
+(30, 12, 'White'),
+(31, 19, 'White'),
+(32, 20, 'White');
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sizes`
+--
+DROP TABLE IF EXISTS `sizes`;
+CREATE TABLE `sizes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `width` decimal(5, 2) DEFAULT NULL,
+  `height` decimal(5, 2) DEFAULT NULL,
+  `unit` varchar(10) DEFAULT NULL,
+  `display` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 17 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+--
+-- Dumping data for table `sizes`
+--
+LOCK TABLES `sizes` WRITE;
+INSERT INTO `sizes`
+VALUES (1, 6.00, 8.00, 'inch', '6 x 8'),
+(2, 8.00, 10.00, 'inch', '8 x 10'),
+(3, 8.00, 12.00, 'inch', '8 x 12'),
+(4, 10.00, 12.00, 'inch', '10 x 12'),
+(5, 10.00, 15.00, 'inch', '10 x 15'),
+(6, 12.00, 15.00, 'inch', '12 x 15'),
+(7, 12.00, 18.00, 'inch', '12 x 18'),
+(8, 3.00, 3.00, 'inch', '3 x 3'),
+(9, 4.00, 4.00, 'inch', '4 x 4'),
+(10, 4.00, 8.00, 'inch', '4 x 8'),
+(11, 4.00, 12.00, 'inch', '4 x 12'),
+(12, 8.00, 8.00, 'inch', '8 x 8'),
+(13, 8.00, 10.00, 'inch', '8 x 10'),
+(14, 8.00, 16.00, 'inch', '8 x 16'),
+(15, 4.00, 6.00, 'inch', '4 x 6'),
+(16, 5.00, 7.00, 'inch', '5 x 7');
+UNLOCK TABLES;
+
+--
+-- Table structure for table `frame_prices`
+--
+DROP TABLE IF EXISTS `frame_prices`;
+CREATE TABLE `frame_prices` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `frame_type_id` int NOT NULL,
+  `size_id` int NOT NULL,
+  `price_lkr` decimal(10, 2) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `frame_type_id` (`frame_type_id`),
+  KEY `size_id` (`size_id`),
+  CONSTRAINT `frame_prices_ibfk_1` FOREIGN KEY (`frame_type_id`) REFERENCES `frame_types` (`id`),
+  CONSTRAINT `frame_prices_ibfk_2` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 143 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+--
+-- Dumping data for table `frame_prices`
+--
+LOCK TABLES `frame_prices` WRITE;
+INSERT INTO `frame_prices`
+VALUES (1, 1, 1, 2800.00),
+(2, 1, 2, 3400.00),
+(3, 1, 3, 3850.00),
+(4, 1, 4, 4200.00),
+(5, 1, 5, 4600.00),
+(6, 1, 6, 4950.00),
+(7, 1, 7, 5250.00),
+(8, 2, 1, 3100.00),
+(9, 2, 2, 3500.00),
+(10, 2, 3, 3950.00),
+(11, 2, 4, 4200.00),
+(12, 2, 5, 4750.00),
+(13, 2, 6, 5000.00),
+(14, 2, 7, 5500.00),
+(15, 3, 1, 2800.00),
+(16, 3, 2, 3400.00),
+(17, 3, 3, 3850.00),
+(18, 3, 4, 4100.00),
+(19, 3, 5, 4450.00),
+(20, 3, 6, 4750.00),
+(21, 3, 7, 4950.00),
+(22, 4, 1, 2750.00),
+(23, 4, 2, 3300.00),
+(24, 4, 3, 3650.00),
+(25, 4, 4, 3950.00),
+(26, 4, 5, 4150.00),
+(27, 4, 6, 4400.00),
+(28, 4, 7, 4750.00),
+(29, 5, 1, 2800.00),
+(30, 5, 3, 3700.00),
+(31, 5, 4, 4000.00),
+(32, 5, 5, 4350.00),
+(33, 5, 6, 4650.00),
+(34, 5, 7, 4950.00),
+(35, 6, 1, 3000.00),
+(36, 6, 2, 3450.00),
+(37, 6, 3, 3900.00),
+(38, 6, 4, 4200.00),
+(39, 6, 5, 4500.00),
+(40, 6, 6, 4950.00),
+(41, 6, 7, 5200.00),
+(42, 7, 1, 1950.00),
+(43, 7, 2, 2500.00),
+(44, 7, 3, 2850.00),
+(45, 7, 4, 3200.00),
+(46, 7, 5, 3550.00),
+(47, 7, 6, 3950.00),
+(48, 7, 7, 4250.00),
+(49, 8, 1, 2200.00),
+(50, 8, 2, 2600.00),
+(51, 8, 3, 2950.00),
+(52, 8, 4, 3200.00),
+(53, 8, 5, 3750.00),
+(54, 8, 6, 4100.00),
+(55, 8, 7, 4450.00),
+(56, 9, 1, 1950.00),
+(57, 9, 2, 2550.00),
+(58, 9, 3, 2850.00),
+(59, 9, 4, 3100.00),
+(60, 9, 5, 3450.00),
+(61, 9, 6, 3750.00),
+(62, 9, 7, 3950.00),
+(63, 10, 1, 1900.00),
+(64, 10, 2, 2450.00),
+(65, 10, 3, 2800.00),
+(66, 10, 4, 2950.00),
+(67, 10, 5, 3150.00),
+(68, 10, 6, 3400.00),
+(69, 10, 7, 3750.00),
+(70, 11, 1, 1950.00),
+(71, 11, 3, 2850.00),
+(72, 11, 4, 3150.00),
+(73, 11, 5, 3350.00),
+(74, 11, 6, 3650.00),
+(75, 11, 7, 3950.00),
+(76, 12, 1, 2250.00),
+(77, 12, 2, 2600.00),
+(78, 12, 3, 2950.00),
+(79, 12, 4, 3200.00),
+(80, 12, 5, 3550.00),
+(81, 12, 6, 3950.00),
+(82, 12, 7, 4250.00),
+(134, 19, 8, 850.00),
+(135, 19, 9, 950.00),
+(136, 19, 10, 1500.00),
+(137, 19, 11, 1950.00),
+(138, 19, 12, 1650.00),
+(139, 19, 13, 2250.00),
+(140, 19, 14, 2500.00),
+(141, 20, 15, 1850.00),
+(142, 20, 16, 1500.00);
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_name` varchar(200) NOT NULL,
+  `customer_address` text,
+  `customer_whatsapp` varchar(50) DEFAULT NULL,
+  `delivery_to` varchar(50) NOT NULL,
+  `delivery_date` date DEFAULT NULL,
+  `total_amount` decimal(10, 2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
 --
 -- Table structure for table `order_items`
 --
@@ -466,55 +519,4 @@ CREATE TABLE `order_items` (
   CONSTRAINT `order_items_ibfk_4` FOREIGN KEY (`frame_type_id`) REFERENCES `frame_types` (`id`),
   CONSTRAINT `order_items_ibfk_5` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`),
   CONSTRAINT `order_items_ibfk_6` FOREIGN KEY (`frame_color_id`) REFERENCES `frame_colors` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 16 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
-
---
--- Table structure for table `orders`
---
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE `orders` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `customer_name` varchar(200) NOT NULL,
-  `customer_address` text,
-  `customer_whatsapp` varchar(50) DEFAULT NULL,
-  `delivery_to` varchar(50) NOT NULL,
-  `delivery_date` date DEFAULT NULL,
-  `total_amount` decimal(10, 2) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 16 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
-
---
--- Table structure for table `sizes`
---
-DROP TABLE IF EXISTS `sizes`;
-CREATE TABLE `sizes` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `width` decimal(5, 2) DEFAULT NULL,
-  `height` decimal(5, 2) DEFAULT NULL,
-  `unit` varchar(10) DEFAULT NULL,
-  `display` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 18 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
---
--- Dumping data for table `sizes`
---
-LOCK TABLES `sizes` WRITE;
-INSERT INTO `sizes`
-VALUES (1, 6.00, 8.00, 'inch', '6 x 8'),
-(2, 8.00, 10.00, 'inch', '8 x 10'),
-(3, 8.00, 12.00, 'inch', '8 x 12'),
-(4, 10.00, 12.00, 'inch', '10 x 12'),
-(5, 10.00, 15.00, 'inch', '10 x 15'),
-(6, 12.00, 15.00, 'inch', '12 x 15'),
-(7, 12.00, 18.00, 'inch', '12 x 18'),
-(8, 3.00, 3.00, 'inch', '3 x 3'),
-(9, 4.00, 4.00, 'inch', '4 x 4'),
-(10, 4.00, 8.00, 'inch', '4 x 8'),
-(11, 4.00, 12.00, 'inch', '4 x 12'),
-(12, 8.00, 8.00, 'inch', '8 x 8'),
-(13, 8.00, 10.00, 'inch', '8 x 10'),
-(14, 8.00, 16.00, 'inch', '8 x 16'),
-(15, 4.00, 6.00, 'inch', '4 x 6'),
-(16, 5.00, 7.00, 'inch', '5 x 7');
-UNLOCK TABLES;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
